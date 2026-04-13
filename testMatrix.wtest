@@ -1,0 +1,7 @@
+import destinos.*
+import empleados.* 
+test "tp"{
+    saraConnor.setPeso(500)
+    assert.equals(600,saraConnor.peso()
+    )
+}
