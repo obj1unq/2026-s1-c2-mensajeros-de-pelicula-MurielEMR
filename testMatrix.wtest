@@ -5,3 +5,27 @@ test "tp"{
     assert.equals(600,saraConnor.peso()
     )
 }
+
+test "neo no puede llevar a la matrix"{
+    assert.throwsException({ neo.entregarPaquete(laMatrix) })
+    assert.notThat(laMatrix.restriccion(neo))
+}
+test "jean puede entregar paquete en la matrix"{
+    paquete.estadoPago(true)
+    jeanGray.entregarPaquete(laMatrix)
+    assert.equals(true, paquete.entregado())
+}
+
+test "no puede ser llevado por sara con camion"{
+
+    paquete.estadoPago(true)
+    saraConnor.vehiculo(camion)
+    assert.throwsException({ saraConnor.entregarPaquete(laMatrix) })
+}
+
+test" sara puede entregar paquete a Brooklyn con la motod"{
+    paquete.estadoPago(true)
+    saraConnor.setPeso(70)
+    saraConnor.entregarPaquete(puenteDeBrooklyn)
+    assert.equals(true, paquete.entregado())
+}

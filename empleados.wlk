@@ -19,11 +19,16 @@ object neo {
 		return acceso
 	}
 	method entregarPaquete(destino){
-		if ( destino.restriccion(self)){
-			paquete.entregar()
-		} else paquete.rechazarEntrega()
+		self.validarEntrega(destino)
+		paquete.entregar()
+		
 		
 
+	}
+	method validarEntrega(destino){
+		if (not destino.restriccion(self)){
+			self.error ("No entregas el paquete")
+		}
 	}
 
 }
@@ -41,7 +46,7 @@ object saraConnor{
 	method puedeLlamar(){
 		return false
 	}
-	method setVehiculo(_vehiculo){
+	method vehiculo(_vehiculo){
 		vehiculo = _vehiculo
 	}
 	method setAcceso(_acceso){
@@ -49,16 +54,21 @@ object saraConnor{
 
 	}
 	method entregarPaquete(destino){
-		if ( destino.restriccion(self)){
-			paquete.entregar()
-		} else paquete.rechazarEntrega()
+		self.validarEntrega(destino)
+		paquete.entregar()
+		
 		
 
+	}
+	method validarEntrega(destino){
+		if (not destino.restriccion(self)){
+			self.error ("No entregas el paquete")
+		}
 	}
 	
 }
 
-object jeanGray{
+object jeanGray{//preguntar
 	var acceso = false
 	method peso(){
 		return 65
@@ -71,11 +81,16 @@ object jeanGray{
 
 	}
 	method entregarPaquete(destino){
-		if ( destino.restriccion(self)){
-			paquete.entregar()
-		} else paquete.rechazarEntrega()
+		self.validarEntrega(destino)
+		paquete.entregar()
+		
 		
 
+	}
+	method validarEntrega(destino){
+		if (not destino.restriccion(self)){
+			self.error ("No entregas el paquete")
+		}
 	}
 
 }
@@ -101,6 +116,9 @@ object paquete{
 	}
 	method entregado(){
 		return entregado
+	}
+	method estadoPago(_estadoPago){
+		estadoPago = _estadoPago
 	}
 }
 
